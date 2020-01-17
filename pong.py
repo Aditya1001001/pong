@@ -8,7 +8,7 @@ window.setup(width=800, height=600)
 window.tracer(0)
 
 # ball speed
-BALL_SPEED = .1
+BALL_SPEED = .15
 
 # left paddle
 
@@ -78,7 +78,7 @@ window.onkeypress(left_paddle_up, "W")
 window.onkeypress(left_paddle_down, "s")
 window.onkeypress(left_paddle_down, "S")
 window.onkeypress(right_paddle_up, "Up")
-window.onkeypress(right_paddle_up, "Down")
+window.onkeypress(right_paddle_down, "Down")
 
 
 
@@ -99,5 +99,15 @@ while True:
         ball.dy *= -1
     if ball.xcor() > 390:
         ball.goto(0,0)
+        ball.dx *= -1
     if ball.xcor() < -390:
         ball.goto(0,0)
+        ball.dx *= -1
+    
+    # collisions between paddles and ball
+    if ball.xcor() > 330 and ball.xcor() < 350 and ball.ycor() < right_paddle.ycor() + 50 and ball.ycor() > right_paddle.ycor() - 50:
+        ball.setx(330)
+        ball.dx *= -1
+    elif ball.xcor()  < -330  and ball.xcor() > -350 and ball.ycor() < left_paddle.ycor() + 50 and ball.ycor() > left_paddle.ycor() - 50:
+        ball.setx(-330)
+        ball.dx *= -1    
