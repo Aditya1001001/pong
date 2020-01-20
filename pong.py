@@ -59,26 +59,26 @@ pen.write("Player A: {} | Player B: {}".format(score_a, score_b), align="center"
 # functions for moving the left paddle
 def left_paddle_up():
     y = left_paddle.ycor()
-    y += 20
+    y = y+20 if y < 240 else  240
     left_paddle.sety(y)
 
 
 def left_paddle_down():
     y = left_paddle.ycor()
-    y -= 20
+    y = y-20 if y > -240 else  -240
     left_paddle.sety(y)
 
 
 # functions for moving the right paddle
 def right_paddle_up():
     y = right_paddle.ycor()
-    y += 20
+    y = y+20 if y < 240 else  240
     right_paddle.sety(y)
 
 
 def right_paddle_down():
     y = right_paddle.ycor()
-    y -= 20
+    y = y-20 if y > -240 else  -240
     right_paddle.sety(y)
 
 
